@@ -240,46 +240,29 @@ impl<C: ICommand, E: IEvent, A: IAggregate<C, E>>
                 },
             };
 
-        if context.current_sequence == 0 {
-            match trans.execute(
-                INSERT_SNAPSHOT,
-                &[
-                    &agg_type,
-                    &aggregate_id,
-                    &last_sequence,
-                    &aggregate_payload,
-                ],
-            ) {
-                Ok(_) => {},
-                Err(e) => {
-                    panic!(
-                        "unable to insert snapshot for aggregate id \
-                         {} with error: {}\n  and payload: {}",
-                        &aggregate_id, e, &aggregate_payload
-                    );
-                },
-            };
-        }
-        else {
-            match trans.execute(
-                UPDATE_SNAPSHOT,
-                &[
-                    &agg_type,
-                    &aggregate_id,
-                    &last_sequence,
-                    &aggregate_payload,
-                ],
-            ) {
-                Ok(_) => {},
-                Err(e) => {
-                    panic!(
-                        "unable to update snapshot for aggregate id \
-                         {} with error: {}\n  and payload: {}",
-                        &aggregate_id, e, &aggregate_payload
-                    );
-                },
-            };
-        }
+        let sql = match context.current_sequence {
+            0 => INSERT_SNAPSHOT,
+            _ => UPDATE_SNAPSHOT,
+        };
+
+        match trans.execute(
+            sql,
+            &[
+                &last_sequence,
+                &aggregate_payload,
+                &agg_type,
+                &aggregate_id,
+            ],
+        ) {
+            Ok(_) => {},
+            Err(e) => {
+                panic!(
+                    "unable to insert snapshot for aggregate id {} \
+                     with error: {}\n  and payload: {}",
+                    &aggregate_id, e, &aggregate_payload
+                );
+            },
+        };
 
         match trans.commit() {
             Ok(_) => Ok(wrapped_events),

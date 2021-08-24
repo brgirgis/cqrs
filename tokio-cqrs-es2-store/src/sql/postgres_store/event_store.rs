@@ -256,10 +256,10 @@ impl<C: ICommand, E: IEvent, A: IAggregate<C, E>>
         };
 
         match sqlx::query(sql)
-            .bind(&agg_type)
-            .bind(&aggregate_id)
             .bind(last_sequence)
             .bind(aggregate_payload)
+            .bind(&agg_type)
+            .bind(&aggregate_id)
             .execute(&self.pool)
             .await
         {

@@ -50,11 +50,11 @@ ORDER BY
 pub static INSERT_SNAPSHOT: &str = "
 INSERT INTO
     snapshots 
-    (
-        aggregate_type,
-        aggregate_id, 
+    ( 
         last_sequence,
-        payload
+        payload,
+        aggregate_type,
+        aggregate_id
     )
 VALUES
     (
@@ -69,12 +69,12 @@ pub static UPDATE_SNAPSHOT: &str = "
 UPDATE
     snapshots
 SET
-    last_sequence = $3,
-    payload = $4
+    last_sequence = $1,
+    payload = $2
 WHERE
-    aggregate_type = $1
+    aggregate_type = $3
     AND
-    aggregate_id = $2;
+    aggregate_id = $4;
 ";
 
 pub static SELECT_SNAPSHOT: &str = "
@@ -93,11 +93,11 @@ pub static INSERT_QUERY: &str = "
 INSERT INTO
     queries 
     (
+        version,
+        payload,
         aggregate_type,
         aggregate_id,
-        query_type,
-        version,
-        payload
+        query_type
     )
 VALUES
     (
@@ -113,14 +113,14 @@ pub static UPDATE_QUERY: &str = "
 UPDATE
     queries
 SET
-    version = $4,
-    payload = $5
+    version = $1,
+    payload = $2
 WHERE
-    aggregate_type = $1
+    aggregate_type = $3
     AND
-    aggregate_id = $2
+    aggregate_id = $4
     AND
-    query_type = $3;
+    query_type = $5;
 ";
 
 pub static SELECT_QUERY: &str = "

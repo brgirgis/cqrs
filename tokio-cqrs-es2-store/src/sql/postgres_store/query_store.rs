@@ -139,11 +139,11 @@ impl<
         };
 
         match sqlx::query(sql)
+            .bind(version)
+            .bind(&payload)
             .bind(&agg_type)
             .bind(&aggregate_id)
             .bind(&query_type)
-            .bind(version)
-            .bind(&payload)
             .execute(&self.pool)
             .await
         {

@@ -135,11 +135,11 @@ impl<
         match self.conn.execute(
             sql,
             &[
+                &version,
+                &payload,
                 &agg_type,
                 &id,
                 &query_type,
-                &version,
-                &payload,
             ],
         ) {
             Ok(_) => Ok(()),

@@ -8,7 +8,7 @@ services:
     networks:
       - default
     ports:
-      - "8081:3306"
+      - "9081:3306"
     environment:
       #- "MARIADB_USER=root"
       - "MARIADB_ROOT_PASSWORD=admin_pass"
@@ -21,7 +21,7 @@ services:
     networks:
       - default
     ports:
-      - "8083:3306"
+      - "9083:3306"
     environment:
       #- "MYSQL_USER=root"
       - "MYSQL_ROOT_PASSWORD=admin_pass"
@@ -34,7 +34,7 @@ services:
     networks:
       - default
     ports:
-      - "8084:5432"
+      - "9084:5432"
     environment:
       - "POSTGRES_USER=admin"
       - "POSTGRES_PASSWORD=admin_pass"

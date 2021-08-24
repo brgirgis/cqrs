@@ -16,6 +16,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Switch to nightly channel
+        run: rustup toolchain install nightly
+
       - name: Check Formatting
         run: make check_fmt
 

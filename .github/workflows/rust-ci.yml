@@ -36,4 +36,4 @@ jobs:
         run: make doc
 
       - name: Run Tests
-        run: make up && sleep 120 && make test
+        run: make test

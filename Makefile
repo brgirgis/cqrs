@@ -1,10 +1,9 @@
 
-SUB_LIBS = cqrs-es2 cqrs-es2-store tokio-cqrs-es2-store
-
 all:
 	make clean
 	make build
 	make doc
+	make test
 
 clean:
 	rm -rf target
@@ -13,13 +12,6 @@ clean:
 
 build:
 	cargo build
-
-up:
-	docker-compose up -d
-	rm -rf test.db*
-
-down:
-	docker-compose down
 
 test:
 	cargo test
@@ -31,9 +23,7 @@ deploy:
 	cargo publish --token ${CRATES_IO_TOKEN}
 
 dry_deploy:
-	for dir in $(SUB_LIBS); do \
-    (cd $$dir; cargo publish --dry-run --allow-dirty); \
-  done
+	cargo publish --dry-run --allow-dirty
 
 check_fmt:
 	cargo +nightly fmt --all -- --check

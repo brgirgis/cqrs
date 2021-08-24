@@ -1,5 +1,9 @@
 # Change log
 
+## `v0.8.0`
+
+- Move stores out of the library
+
 ## `v0.7.0`
 
 - Improve logging

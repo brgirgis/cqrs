@@ -10,21 +10,26 @@
 
 ---
 
+Provides all basic interfaces to for the CQRS system.
+
 ## Installation
 
 ```toml
 [dependencies]
-cqrs-es2 = "*"
+# serialization
 serde = { version = "^1.0.127", features = ["derive"] }
 serde_json = "^1.0.66"
+
+# CQRS framework
+cqrs-es2 = { version = "*"}
 ```
 
 ## Usage
 
 Full fledged demo applications:
 
-- [RESTful](https://github.com/brgirgis/cqrs-restful-demo)
-- [gRPC](https://github.com/brgirgis/cqrs-grpc-demo)
+- Sync [RESTful](https://github.com/brgirgis/cqrs-es2-store/tree/master/examples/restful)
+- Async [gRPC](https://github.com/brgirgis/tokio-cqrs-es2-store/tree/master/examples/grpc)
 
 ## Change Log
 

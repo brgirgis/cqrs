@@ -20,14 +20,26 @@
 //!
 //! ---
 //!
+//! Provides all basic interfaces to for the CQRS system.
+//!
+//! ## Installation
+//!
+//! ```toml
+//! [dependencies]
+//! # serialization
+//! serde = { version = "^1.0.127", features = ["derive"] }
+//! serde_json = "^1.0.66"
+//!
+//! # CQRS framework
+//! cqrs-es2 = { version = "*"}
+//! ```
+//!
 //! ## Usage
 //!
 //! Full fledged demo applications:
 //!
-//! - Sync [RESTful](https://github.com/brgirgis/cqrs-es2/tree/master/examples/restful)
-//!   API
-//! - Async [gRPC](https://github.com/brgirgis/cqrs-es2/tree/master/examples/grpc)
-//!   API
+//! - Sync [RESTful](https://github.com/brgirgis/cqrs-es2-store/tree/master/examples/restful)
+//! - Async [gRPC](https://github.com/brgirgis/tokio-cqrs-es2-store/tree/master/examples/grpc)
 
 pub use crate::{
     aggregates::*,

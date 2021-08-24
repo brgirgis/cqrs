@@ -36,4 +36,4 @@ dry_deploy:
   done
 
 check_fmt:
-	cargo fmt --all -- --check
+	cargo +nightly fmt --all -- --check

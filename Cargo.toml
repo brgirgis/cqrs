@@ -12,7 +12,7 @@ description = "A Rust library providing lightweight CQRS and event sourcing fram
 readme = "README.md"
 documentation = "https://docs.rs/cqrs-es2"
 repository = "https://github.com/brgirgis/cqrs-es2"
-keywords = ["cqrs", "event-sourcing", "es", "DDD", "command", "query"]
+keywords = ["cqrs", "event-sourcing", "es", "DDD"]
 
 [dependencies]
 # logging

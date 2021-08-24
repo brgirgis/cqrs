@@ -19,6 +19,18 @@ serde = { version = "^1.0.127", features = ["derive"] }
 serde_json = "^1.0.66"
 ```
 
+## Features
+
+| Feature              | Comment                                         |
+| -------------------- | ----------------------------------------------- |
+| `default`            | Build will only contain the async memory stores |
+| `with-sqlx-postgres` |                                                 |
+| `with-sqlx-mysql`    |                                                 |
+| `with-sqlx-mariadb`  |                                                 |
+| `with-sqlx-sqlite`   |                                                 |
+| `with-all-sqlx`      |                                                 |
+| `with-all-async`     |                                                 |
+
 ## Usage
 
 Full fledged demo applications:

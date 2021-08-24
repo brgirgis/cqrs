@@ -3,8 +3,9 @@ use log::info;
 use cqrs_es2::{
     Error,
     EventContext,
-    IEventDispatcher,
 };
+
+use cqrs_es2_store::IEventDispatcher;
 
 use super::super::{
     commands::BankAccountCommand,

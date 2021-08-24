@@ -1,7 +1,7 @@
 use async_trait::async_trait;
 use std::collections::HashMap;
 
-use cqrs_es2_core::{
+use cqrs_es2::{
     AggregateContext,
     Error,
     EventContext,

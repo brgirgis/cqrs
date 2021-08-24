@@ -1,6 +1,6 @@
 use async_trait::async_trait;
 
-use cqrs_es2_core::{
+use cqrs_es2::{
     Error,
     EventContext,
     ICommand,
@@ -16,7 +16,7 @@ use cqrs_es2_core::{
 ///
 /// ```rust
 /// use async_trait::async_trait;
-/// use cqrs_es2_core::{
+/// use cqrs_es2::{
 ///     example_impl::{
 ///         CustomerCommand,
 ///         CustomerEvent,

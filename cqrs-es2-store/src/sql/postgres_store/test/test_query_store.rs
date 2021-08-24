@@ -3,7 +3,7 @@ use postgres::{
     NoTls,
 };
 
-use cqrs_es2_core::{
+use cqrs_es2::{
     example_impl::*,
     QueryContext,
 };

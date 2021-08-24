@@ -1,63 +1,8 @@
 [workspace]
 members = [
-  ".",
-  "cqrs-es2-core",
+  "cqrs-es2",
   "cqrs-es2-store",
   "tokio-cqrs-es2-store",
   "examples/grpc",
   "examples/restful",
 ]
-
-[package]
-name = "cqrs-es2"
-version = "0.8.0"
-authors = [
-  "Dave Garred <dave.garred@serverlesstechnology.com>",
-  "Bassem Girgis <brgirgis@gmail.com>",
-]
-edition = "2018"
-license = "MIT"
-description = "A Rust library providing lightweight CQRS and event sourcing framework."
-readme = "README.md"
-documentation = "https://docs.rs/cqrs-es2"
-repository = "https://github.com/brgirgis/cqrs-es2"
-keywords = ["cqrs", "event-sourcing", "es", "DDD"]
-
-[features]
-default = []
-with-sqlx-postgres = [
-  "tokio-cqrs-es2-store",
-  "tokio-cqrs-es2-store/with-sqlx-postgres",
-]
-with-sqlx-mysql = [
-  "tokio-cqrs-es2-store",
-  "tokio-cqrs-es2-store/with-sqlx-mysql",
-]
-with-sqlx-mariadb = [
-  "tokio-cqrs-es2-store",
-  "tokio-cqrs-es2-store/with-sqlx-mariadb",
-]
-# with-sqlx-mssql = [
-#   "tokio-cqrs-es2-store",
-#   "tokio-cqrs-es2-store/with-sqlx-mssql",
-# ]
-with-sqlx-sqlite = [
-  "tokio-cqrs-es2-store",
-  "tokio-cqrs-es2-store/with-sqlx-sqlite",
-]
-with-all-sqlx = [
-  "with-sqlx-postgres",
-  "with-sqlx-mysql",
-  "with-sqlx-mariadb",
-  #"with-sqlx-mssql",
-  "with-sqlx-sqlite",
-]
-with-all-async = ["with-all-sqlx"]
-with-postgres = ["cqrs-es2-store"]
-with-all-sql = ["with-postgres"]
-with-all-sync = ["with-all-sql"]
-
-[dependencies]
-cqrs-es2-core = { version = "0.8.0", path = "./cqrs-es2-core" }
-cqrs-es2-store = { version = "0.8.0", path = "./cqrs-es2-store", optional = true, default-features = false }
-tokio-cqrs-es2-store = { version = "0.8.0", path = "./tokio-cqrs-es2-store", optional = true, default-features = false }

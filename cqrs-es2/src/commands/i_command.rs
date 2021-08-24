@@ -21,7 +21,7 @@ use std::fmt::Debug;
 /// ```rust
 /// use std::fmt::Debug;
 ///
-/// use cqrs_es2_core::ICommand;
+/// use cqrs_es2::ICommand;
 ///
 /// #[derive(Debug, PartialEq, Clone)]
 /// pub enum CustomerCommand {

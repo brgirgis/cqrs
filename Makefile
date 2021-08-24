@@ -1,4 +1,6 @@
 
+SUB_LIBS = cqrs-es2 cqrs-es2-store tokio-cqrs-es2-store
+
 all:
 	make clean
 	make build
@@ -23,10 +25,15 @@ test:
 	cargo test
 
 doc:
-	cargo doc --lib --no-deps
+	cargo doc --lib --no-deps --all-features
 
 deploy:
 	cargo publish --token ${CRATES_IO_TOKEN}
 
-check:
-	cargo publish --dry-run --allow-dirty
+dry_deploy:
+	for dir in $(SUB_LIBS); do \
+    (cd $$dir; cargo publish --dry-run --allow-dirty); \
+  done
+
+check_fmt:
+	cargo fmt --all -- --check

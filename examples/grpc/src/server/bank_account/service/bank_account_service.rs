@@ -6,7 +6,7 @@ use tonic::{
     Status,
 };
 
-use cqrs_es2::IQueryStore;
+use tokio_cqrs_es2_store::IQueryStore;
 
 use crate::bank_account_api::{
     bank_account_server::BankAccount,

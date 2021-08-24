@@ -27,23 +27,11 @@ serde_json = "^1.0.66"
 
 async-trait = "^0.1"
 
-# grpc minimum
-tonic = "0.5"
-prost = "0.8"
-tokio = { version = "1", features = [
-  "rt-multi-thread",
-  "time",
-  "fs",
-  "macros",
-  "net",
-] }
+# CQRS framework
+cqrs-es2 = { version = "0.8.0", path = "../../cqrs-es2" }
 
-# structopt
-structopt = { version = "0.3", features = ["paw"] }
-#paw = "1.0"
-
-# CQRS framework and postgres implementation
-cqrs-es2 = { path = "../../", default-features = false, features = [
+# Async postgres store implementation
+tokio-cqrs-es2-store = { version = "0.1.0", path = "../../tokio-cqrs-es2-store", default-features = false, features = [
   "with-sqlx-postgres",
 ] }
 
@@ -60,6 +48,21 @@ sqlx = { version = "0.5.6", features = [
   "chrono",
   "tls",
 ] }
+
+# grpc minimum
+tonic = "0.5"
+prost = "0.8"
+tokio = { version = "1", features = [
+  "rt-multi-thread",
+  "time",
+  "fs",
+  "macros",
+  "net",
+] }
+
+# structopt
+structopt = { version = "0.3", features = ["paw"] }
+#paw = "1.0"
 
 # other
 chrono = "^0.4"

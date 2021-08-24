@@ -1,4 +1,4 @@
-use cqrs_es2_core::{
+use cqrs_es2::{
     Error,
     EventContext,
     ICommand,
@@ -13,7 +13,7 @@ use cqrs_es2_core::{
 /// For illustration only:
 ///
 /// ```rust
-/// use cqrs_es2_core::{
+/// use cqrs_es2::{
 ///     example_impl::{
 ///         CustomerCommand,
 ///         CustomerEvent,

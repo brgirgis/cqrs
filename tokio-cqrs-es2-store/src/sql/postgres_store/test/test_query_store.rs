@@ -1,6 +1,6 @@
 use sqlx::postgres::PgPoolOptions;
 
-use cqrs_es2_core::{
+use cqrs_es2::{
     example_impl::*,
     Error,
     QueryContext,

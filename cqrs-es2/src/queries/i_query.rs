@@ -29,7 +29,7 @@ use crate::{
 /// };
 /// use std::fmt::Debug;
 ///
-/// use cqrs_es2_core::{
+/// use cqrs_es2::{
 ///     example_impl::{
 ///         Customer,
 ///         CustomerEvent,CustomerCommand

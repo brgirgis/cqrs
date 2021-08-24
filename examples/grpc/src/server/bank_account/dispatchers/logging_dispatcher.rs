@@ -4,8 +4,9 @@ use log::info;
 use cqrs_es2::{
     Error,
     EventContext,
-    IEventDispatcher,
 };
+
+use tokio_cqrs_es2_store::IEventDispatcher;
 
 use super::super::{
     commands::BankAccountCommand,

@@ -35,7 +35,7 @@ use std::fmt::Debug;
 /// };
 /// use std::fmt::Debug;
 ///
-/// use cqrs_es2_core::IEvent;
+/// use cqrs_es2::IEvent;
 ///
 /// #[derive(
 ///     Debug,

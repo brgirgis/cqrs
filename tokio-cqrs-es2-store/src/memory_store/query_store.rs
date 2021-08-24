@@ -8,7 +8,7 @@ use std::{
     },
 };
 
-use cqrs_es2_core::{
+use cqrs_es2::{
     Error,
     EventContext,
     IAggregate,

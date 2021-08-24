@@ -2,23 +2,72 @@
 #![deny(missing_docs)]
 #![deny(clippy::all)]
 #![warn(rust_2018_idioms)]
-// #![warn(clippy::pedantic,missing_debug_implementations)]
+#![warn(
+    clippy::pedantic,
+    //missing_debug_implementations
+)]
 
-//! # cqrs-es2-store
+//! Sync implementation of the cqrs-es2 store.
 //!
-//! **The sync implementation of the CQRS store.**
+//! Provides sync interfaces to different database implementations for
+//! the CQRS system store.
 //!
-//! [![Publish](https://github.com/brgirgis/cqrs-es2/actions/workflows/crates-io.yml/badge.svg)](https://github.com/brgirgis/cqrs-es2/actions/workflows/crates-io.yml)
-//! [![Test](https://github.com/brgirgis/cqrs-es2/actions/workflows/rust-ci.yml/badge.svg)](https://github.com/brgirgis/cqrs-es2/actions/workflows/rust-ci.yml)
-//! [![Latest version](https://img.shields.io/crates/v/cqrs-es2)](https://crates.io/crates/cqrs-es2)
-//! [![docs](https://img.shields.io/badge/API-docs-blue.svg)](https://docs.rs/cqrs-es2)
-//! ![License](https://img.shields.io/crates/l/cqrs-es2.svg)
+//! # Design
 //!
-//! ---
+//! The main components of this library are:
+//!   - `IEventDispatcher` - an interface for sync events listeners
+//!   - `IEventStore` - an interface for sync event stores
+//!   - `IQueryStore` - an interface for sync query stores
+//!
+//! # Features
+//!
+//! - `with-postgres` - sync Postgres store
+//! - `with-all-sync` - all sync drivers (default)
+//!
+//! # Usage
+//!
+//! To use this library in a sync application, add the following to
+//! your dependency section in the project's `Cargo.toml`:
+//!
+//! ```toml
+//! [dependencies]
+//! # logging
+//! log = { version = "^0.4", features = [
+//!   "max_level_debug",
+//!   "release_max_level_warn",
+//! ] }
+//! fern = "^0.5"
+//!
+//! # serialization
+//! serde = { version = "^1.0.127", features = ["derive"] }
+//! serde_json = "^1.0.66"
+//!
+//! # CQRS framework
+//! cqrs-es2 = { version = "*"}
+//!
+//! # Sync postgres store implementation
+//! cqrs-es2-store = { version = "*", default-features = false, features = [
+//!   "with-postgres",
+//! ] }
+//!
+//! # postgres driver
+//! postgres = { version = "^0.19.1", features = ["with-serde_json-1"] }
+//! ```
+//!
+//! # Example
+//!
+//! A full sync store example application is available [here](https://github.com/brgirgis/cqrs-es2/tree/master/examples/restful).
 
 pub use repository::*;
+
+#[cfg(feature = "with-postgres")]
 pub use sql::*;
 
+/// Sync memory store
 pub mod memory_store;
+
+/// Sync repository interface
 mod repository;
+
+#[cfg(feature = "with-postgres")]
 mod sql;

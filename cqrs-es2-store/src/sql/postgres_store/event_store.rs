@@ -5,7 +5,7 @@ use std::{
 
 use postgres::Client;
 
-use cqrs_es2_core::{
+use cqrs_es2::{
     AggregateContext,
     Error,
     EventContext,

@@ -11,7 +11,7 @@ use super::aggregate_test_executor::AggregateTestExecutor;
 /// ***most important*** parts of any CQRS system.
 ///
 /// ```rust
-/// use cqrs_es2_core::{
+/// use cqrs_es2::{
 ///     example_impl::{
 ///         AddCustomerName,
 ///         Customer,

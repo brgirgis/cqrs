@@ -1,9 +1,10 @@
-use cqrs_es2::{
+use cqrs_es2::Error;
+
+use tokio_cqrs_es2_store::{
     postgres_store::{
         EventStore,
         QueryStore,
     },
-    Error,
     Repository,
 };
 

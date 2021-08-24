@@ -8,7 +8,7 @@ use iron::{
 };
 use router::Router;
 
-use cqrs_es2::IQueryStore;
+use cqrs_es2_store::IQueryStore;
 
 use super::super::stores::get_query_store;
 

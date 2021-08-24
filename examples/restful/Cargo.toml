@@ -19,11 +19,15 @@ fern = "^0.5"
 serde = { version = "^1.0.127", features = ["derive"] }
 serde_json = "^1.0.66"
 
-# CQRS framework and postgres implementation
-cqrs-es2 = { path = "../../", default-features = false, features = [
+# CQRS framework
+cqrs-es2 = { version = "0.8.0", path = "../../cqrs-es2" }
+
+# Sync postgres store implementation 
+cqrs-es2-store = { version = "0.1.0", path = "../../cqrs-es2-store", default-features = false, features = [
   "with-postgres",
 ] }
 
+# postgres driver
 postgres = { version = "^0.19.1", features = ["with-serde_json-1"] }
 
 # rest API

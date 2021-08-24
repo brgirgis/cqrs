@@ -1,4 +1,4 @@
-use cqrs_es2::{
+use cqrs_es2_store::{
     postgres_store::{
         EventStore,
         QueryStore,

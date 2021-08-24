@@ -20,7 +20,7 @@
 //!
 //! ---
 //!
-//! Provides all basic interfaces to for the CQRS system.
+//! Provides all basic interfaces for the CQRS system.
 //!
 //! ## Installation
 //!

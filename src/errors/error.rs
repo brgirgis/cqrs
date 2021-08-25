@@ -60,8 +60,8 @@ impl Error {
 }
 
 impl From<serde_json::error::Error> for Error {
-    fn from(err: serde_json::error::Error) -> Self {
-        match err.classify() {
+    fn from(e: serde_json::error::Error) -> Self {
+        match e.classify() {
             serde_json::error::Category::Syntax => {
                 Error::new("invalid json")
             },

@@ -21,11 +21,11 @@ impl<E: IEvent> AggregateResultValidator<E> {
     ) {
         let events = match self.result {
             Ok(x) => x,
-            Err(err) => {
+            Err(e) => {
                 panic!(
                     "expected success, received aggregate error: \
                      '{}'",
-                    err
+                    e
                 );
             },
         };
@@ -49,16 +49,16 @@ impl<E: IEvent> AggregateResultValidator<E> {
         };
 
         match err {
-            Error::TechnicalError(err) => {
+            Error::TechnicalError(e) => {
                 panic!(
                     "expected user error but found technical error: \
                      {}",
-                    err
+                    e
                 )
             },
-            Error::UserError(err) => {
+            Error::UserError(e) => {
                 assert_eq!(
-                    err.message,
+                    e.message,
                     Some(error_message.to_string())
                 );
             },

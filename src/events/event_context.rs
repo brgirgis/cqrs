@@ -21,7 +21,7 @@ pub struct EventContext<C: ICommand, E: IEvent> {
     pub aggregate_id: String,
 
     /// The sequence number for an aggregate instance.
-    pub sequence: usize,
+    pub sequence: i64,
 
     /// The event payload with all business information.
     pub payload: E,
@@ -38,7 +38,7 @@ impl<C: ICommand, E: IEvent> EventContext<C, E> {
     /// Constructor
     pub fn new(
         aggregate_id: String,
-        sequence: usize,
+        sequence: i64,
         payload: E,
         metadata: HashMap<String, String>,
     ) -> Self {

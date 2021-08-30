@@ -23,12 +23,11 @@ pub struct AggregateContext<
     /// loaded.
     pub aggregate_id: String,
 
-    /// The current state of the aggregate instance.
-    pub aggregate: A,
+    /// The current version number for this aggregate instance.
+    pub version: i64,
 
-    /// The last committed event sequence number for this aggregate
-    /// instance.
-    pub current_sequence: usize,
+    /// The current state of the aggregate instance.
+    pub payload: A,
 
     _phantom: PhantomData<(C, E)>,
 }
@@ -39,13 +38,13 @@ impl<C: ICommand, E: IEvent, A: IAggregate<C, E>>
     /// constructor
     pub fn new(
         aggregate_id: String,
-        aggregate: A,
-        current_sequence: usize,
+        version: i64,
+        payload: A,
     ) -> Self {
         let x = Self {
             aggregate_id,
-            aggregate,
-            current_sequence,
+            version,
+            payload,
             _phantom: PhantomData,
         };
 

@@ -28,8 +28,8 @@ cqrs-es2 = { version = "*"}
 
 Full fledged demo applications:
 
-- Sync [RESTful](https://github.com/brgirgis/cqrs-es2-store/tree/master/examples)
-- Async [gRPC](https://github.com/brgirgis/tokio-cqrs-es2-store/tree/master/examples)
+- Sync RESTful [examples](https://github.com/brgirgis/cqrs-es2-store/tree/master/examples)
+- Async gRPC [examples](https://github.com/brgirgis/tokio-cqrs-es2-store/tree/master/examples)
 
 ## Change Log
 

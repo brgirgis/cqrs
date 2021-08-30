@@ -1,5 +1,10 @@
 # Change log
 
+## `v0.9.0`
+
+- Fix documentation
+- Refactor `AggregateContext` and `EventContext`
+
 ## `v0.8.0`
 
 - Move stores out of the library

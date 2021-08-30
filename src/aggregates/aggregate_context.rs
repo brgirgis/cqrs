@@ -35,7 +35,7 @@ pub struct AggregateContext<
 impl<C: ICommand, E: IEvent, A: IAggregate<C, E>>
     AggregateContext<C, E, A>
 {
-    /// constructor
+    /// Constructor
     pub fn new(
         aggregate_id: String,
         version: i64,

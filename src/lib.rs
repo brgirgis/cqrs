@@ -70,9 +70,9 @@ mod events;
 mod queries;
 
 /// Test provides a test framework for building a resilient test base
-/// around aggregates. A `TestFramework` should be used to build a
-/// comprehensive set of aggregate tests to verify your application
-/// logic (aka business rules).
+/// around aggregates. A `HandlerTester` and a `ConsumerTester` should
+/// be used to build a comprehensive set of aggregate and query tests
+/// to verify your application logic (aka business rules).
 mod test_framework;
 
 #[doc(hidden)]

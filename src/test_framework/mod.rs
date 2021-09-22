@@ -1,8 +1,5 @@
-pub use test_framework::TestFramework;
+pub use test_consumer::*;
+pub use test_handler::*;
 
-mod aggregate_result_validator;
-mod aggregate_test_executor;
-mod test_framework;
-
-#[cfg(test)]
-mod test;
+mod test_consumer;
+mod test_handler;

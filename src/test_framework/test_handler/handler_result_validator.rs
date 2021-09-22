@@ -3,37 +3,36 @@ use crate::{
     events::IEvent,
 };
 
-/// Validation object for the `TestFramework` package.
-pub struct AggregateResultValidator<E: IEvent> {
+/// Validation object for the `HandlerTester`
+pub struct HandlerResultValidator<E: IEvent> {
     result: Result<Vec<E>, Error>,
 }
 
-impl<E: IEvent> AggregateResultValidator<E> {
+impl<E: IEvent> HandlerResultValidator<E> {
     pub fn new(result: Result<Vec<E>, Error>) -> Self {
         Self { result }
     }
 
     /// Verifies that the expected events have been produced by the
-    /// command.
-    pub fn then_expect_events(
+    /// command handler
+    pub fn then_expect(
         self,
-        expected_events: Vec<E>,
+        expected: Vec<E>,
     ) {
         let events = match self.result {
             Ok(x) => x,
             Err(e) => {
                 panic!(
-                    "expected success, received aggregate error: \
-                     '{}'",
+                    "expected success, received error: '{}'",
                     e
                 );
             },
         };
-        assert_eq!(&events[..], &expected_events[..]);
+        assert_eq!(&events[..], &expected[..]);
     }
 
     /// Verifies that an `Error` with the expected message is
-    /// produced with the command.
+    /// produced from the command handler
     pub fn then_expect_error(
         self,
         error_message: &str,

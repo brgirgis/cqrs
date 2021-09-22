@@ -1,5 +1,10 @@
 # Change log
 
+## `v0.10.0`
+
+- Improve Aggregate implementations testing by removing `TestFramework` and adding `HandlerTester`
+- Add `ConsumerTester` for testing query implementations
+
 ## `v0.9.0`
 
 - Fix documentation

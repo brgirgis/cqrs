@@ -1,14 +1,14 @@
 use crate::example_impl::*;
 
-use super::test_framework::TestFramework;
+use super::handler_tester::HandlerTester;
 
-type ThisTestFramework =
-    TestFramework<CustomerCommand, CustomerEvent, Customer>;
+type ThisTester =
+    HandlerTester<CustomerCommand, CustomerEvent, Customer>;
 
 #[test]
-fn test_framework_test() {
+fn test_handler_tester() {
     let test_name = "test A";
-    let test_framework = ThisTestFramework::default();
+    let test_framework = ThisTester::default();
 
     test_framework
         .given(vec![CustomerEvent::NameAdded(
@@ -21,7 +21,7 @@ fn test_framework_test() {
                 new_email: test_name.to_string(),
             },
         ))
-        .then_expect_events(vec![CustomerEvent::EmailUpdated(
+        .then_expect(vec![CustomerEvent::EmailUpdated(
             EmailUpdated {
                 new_email: test_name.to_string(),
             },
@@ -45,9 +45,9 @@ fn test_framework_test() {
 
 #[test]
 #[should_panic]
-fn test_framework_failure_test() {
+fn test_handler_tester_failure_test_a() {
     let test_name = "test A";
-    let test_framework = ThisTestFramework::default();
+    let test_framework = ThisTester::default();
 
     test_framework
         .given(vec![CustomerEvent::NameAdded(
@@ -60,7 +60,7 @@ fn test_framework_failure_test() {
                 changed_name: test_name.to_string(),
             },
         ))
-        .then_expect_events(vec![CustomerEvent::NameAdded(
+        .then_expect(vec![CustomerEvent::NameAdded(
             NameAdded {
                 changed_name: test_name.to_string(),
             },
@@ -69,9 +69,9 @@ fn test_framework_failure_test() {
 
 #[test]
 #[should_panic]
-fn test_framework_failure_test_b() {
+fn test_handler_tester_failure_test_b() {
     let test_name = "test A";
-    let test_framework = ThisTestFramework::default();
+    let test_framework = ThisTester::default();
 
     test_framework
         .given(vec![CustomerEvent::NameAdded(

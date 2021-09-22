@@ -1,4 +1,4 @@
-use crate::TestFramework;
+use crate::HandlerTester;
 
 use super::{
     aggregate::Customer,
@@ -6,19 +6,19 @@ use super::{
     events::*,
 };
 
-type ThisTestFramework =
-    TestFramework<CustomerCommand, CustomerEvent, Customer>;
+type ThisHandlerTester =
+    HandlerTester<CustomerCommand, CustomerEvent, Customer>;
 
 #[test]
 fn test_change_name() {
-    ThisTestFramework::default()
+    ThisHandlerTester::default()
         .given_no_previous_events()
         .when(CustomerCommand::AddCustomerName(
             AddCustomerName {
                 changed_name: "John Doe".to_string(),
             },
         ))
-        .then_expect_events(vec![CustomerEvent::NameAdded(
+        .then_expect(vec![CustomerEvent::NameAdded(
             NameAdded {
                 changed_name: "John Doe".to_string(),
             },
@@ -27,7 +27,7 @@ fn test_change_name() {
 
 #[test]
 fn test_change_name_again() {
-    ThisTestFramework::default()
+    ThisHandlerTester::default()
         .given(vec![CustomerEvent::NameAdded(
             NameAdded {
                 changed_name: "John Doe".to_string(),
